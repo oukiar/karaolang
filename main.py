@@ -85,9 +85,16 @@ class Karaotool(FloatLayout):
         elapsed = time.time() - self.start
         
         self.fsteps.write(str(elapsed) + '\n')
-        
+
+class Karaolang(FloatLayout):
+    pass
 
 if __name__ == '__main__':
-    from kivy.base import runTouchApp
     
-    runTouchApp(Karaotool(source = sys.argv[1]) )
+    from kivy.app import App
+    
+    class KaraolangApp(App):
+        def build(self):
+            return Karaolang()
+
+    KaraolangApp().run()
