@@ -95,6 +95,6 @@ if __name__ == '__main__':
     
     class KaraolangApp(App):
         def build(self):
-            return Karaolang()
+            return Karaotool(source=sys.argv[1])
 
     KaraolangApp().run()
