@@ -1,0 +1,21 @@
+
+
+<LabelShadow>:
+    Label:
+        text: root.text
+        pos: root.pos[0]+2, root.pos[1]+2
+        #pos: root.pos
+        size: root.size
+        #color: 0,0,0,1
+        font_size: root.font_size
+
+<Karaolang>:
+    BoxLayout:
+        orientation: "vertical"
+        LabelShadow:
+            text: "English"
+        Video:
+            allow_stretch: True
+            keep_ratio: False
+        LabelShadow:
+            text: "Translation"

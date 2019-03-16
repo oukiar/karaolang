@@ -7,6 +7,9 @@ from kivy.clock import Clock
 from kivy.uix.popup import Popup
 import time, os, sys
 
+class LabelShadow(Label):
+    pass
+
 class Karaotool(FloatLayout):
     
     def __init__(self, **kwargs):
@@ -36,8 +39,9 @@ class Karaotool(FloatLayout):
         
         self.video.bind(on_loaded=self.on_loaded)
         
-        self.kar_english = Label(text='KARAOKELAND', 
+        self.kar_english = LabelShadow(text='KARAOKELAND', 
                                     size_hint_y=None,
+                                    color=(0,0,0,1),
                                     font_size=32 )
                                 
                                 
@@ -47,8 +51,9 @@ class Karaotool(FloatLayout):
         #si existe el archivo con los tiempos
         if os.path.exists(self.base_filename + '.kos'):            
                 
-            self.kar_spanish = Label(text='KARAOKELAND ESP', 
+            self.kar_spanish = LabelShadow(text='KARAOKELAND ESP', 
                                         size_hint_y=1,
+                                        color=(0,0,0,1),
                                         font_size=32 ) 
                                         
             self.add_widget(self.kar_spanish)
