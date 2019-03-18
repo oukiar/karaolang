@@ -7,6 +7,8 @@ from kivy.clock import Clock
 from kivy.uix.popup import Popup
 import time, os, sys
 
+from kivy.animation import Animation
+
 class LabelShadow(Label):
     pass
 
@@ -95,11 +97,30 @@ class Karaotool(FloatLayout):
         if val > float(self.cursteptime):
 
             try:
-                self.kar_english.text = self.content[self.line]
+                
+                if hasattr(self, "old_kar_english"):
+                    self.remove_widget(self.old_kar_english)
+                    
+                self.old_kar_english = self.kar_english
+                    
+                #subir titulo
+                Animation(y=self.old_kar_english.y+50, opacity=.5, duration=.5).start(self.old_kar_english)
+                #self.kar_english.y += 80
+                
+                        
+                self.kar_english = LabelShadow(text=self.content[self.line], 
+                                            size_hint_y=None,
+                                            color=(0,0,0,1),
+                                            font_size=32 )
+                
+                self.add_widget(self.kar_english)
+                
                 try:
                     self.kar_spanish.text = self.esteps[self.line]
                 except:
                     pass
+
+                
                 
                 self.line += 1
                 
@@ -116,6 +137,8 @@ class Karaotool(FloatLayout):
             #advance one line
             self.kar_english.text = self.content[self.line]
             self.line += 1
+            
+            #self.kar_english.pos.y += 200
             
             self.fsteps.write(str(self.video.position) + '\n')
         except:
